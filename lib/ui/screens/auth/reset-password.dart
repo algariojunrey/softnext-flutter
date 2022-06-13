@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant/ui/screens/home.dart';
 
 import '../../widgets/logo.dart';
 
@@ -67,7 +68,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => Navigator.pop(context),
                         child: const Text(
                           "ログイン画面に戻る",
                           style: TextStyle(color: Colors.black),
@@ -82,7 +83,14 @@ class _ResetPasswordState extends State<ResetPassword> {
                       minimumSize: const Size.fromHeight(50.0),
                       primary: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Home(),
+                        ),
+                      );
+                    },
                     child: const Text("送信する"),
                   ),
                 ],

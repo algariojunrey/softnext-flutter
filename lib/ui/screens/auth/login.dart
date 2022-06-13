@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant/ui/screens/auth/registration.dart';
+import 'package:restaurant/ui/screens/auth/reset-password.dart';
+import 'package:restaurant/ui/screens/home.dart';
 import 'package:restaurant/ui/widgets/logo.dart';
 
 class Login extends StatefulWidget {
@@ -87,7 +90,13 @@ class _LoginState extends State<Login> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ResetPassword()),
+                          );
+                        },
                         child: const Text(
                           "パスワードを忘れた方はこちら",
                           style: TextStyle(color: Colors.black),
@@ -95,7 +104,13 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Registration()),
+                          );
+                        },
                         child: const Text(
                           "新規登録はこちら",
                           style: TextStyle(color: Colors.black),
@@ -110,7 +125,12 @@ class _LoginState extends State<Login> {
                       minimumSize: const Size.fromHeight(50.0),
                       primary: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Home()),
+                      );
+                    },
                     child: const Text("ログイン"),
                   ),
                 ],
