@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant/ui/screens/cost/cost_management.dart';
 
-import '../widgets/home_menu.dart';
+import '../test.dart';
+import '../widgets/app_drawer.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -11,11 +13,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppDrawer(
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             const SizedBox(
@@ -33,28 +34,120 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const <Widget>[
-                HomeMenu("原価管理"),
-                SizedBox(width: 16),
-                HomeMenu("労務管理"),
+              children: <Widget>[
+                Expanded(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints.tightFor(height: 100),
+                    child: ElevatedButton(
+                      child: const Text(
+                        "原価管理",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CostManagement(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints.tightFor(height: 100),
+                    child: ElevatedButton(
+                      child: const Text(
+                        "労務管理",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Test(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 26),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const <Widget>[
-                HomeMenu("顧客管理"),
-                SizedBox(width: 16),
-                HomeMenu("オペレーション管理"),
+              children: <Widget>[
+                Expanded(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints.tightFor(height: 100),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "顧客管理",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints.tightFor(height: 100),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "オペレーション管理",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 26),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const <Widget>[
-                HomeMenu("売上管理"),
-                SizedBox(width: 16),
-                HomeMenu("経営管理"),
+              children: <Widget>[
+                Expanded(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints.tightFor(height: 100),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "売上管理",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints.tightFor(height: 100),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "経営管理",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],

@@ -3,6 +3,23 @@ import 'package:restaurant/ui/screens/auth/login.dart';
 import 'package:restaurant/ui/screens/auth/registration.dart';
 import 'package:restaurant/ui/screens/auth/reset-password.dart';
 
+const MaterialColor primaryBlack = MaterialColor(
+  _blackPrimaryValue,
+  <int, Color>{
+    50: Color(0xFF000000),
+    100: Color(0xFF000000),
+    200: Color(0xFF000000),
+    300: Color(0xFF000000),
+    400: Color(0xFF000000),
+    500: Color(_blackPrimaryValue),
+    600: Color(0xFF000000),
+    700: Color(0xFF000000),
+    800: Color(0xFF000000),
+    900: Color(0xFF000000),
+  },
+);
+const int _blackPrimaryValue = 0xFF000000;
+
 void main() {
   runApp(const MyApp());
 }
@@ -25,7 +42,11 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: primaryBlack,
+        textTheme: Theme.of(context).textTheme.apply(
+              fontSizeFactor: 1.0,
+              fontSizeDelta: 6.0,
+            ),
       ),
       debugShowCheckedModeBanner: false,
       home: const Login(),
