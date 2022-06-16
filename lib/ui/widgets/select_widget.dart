@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../types/direction.dart';
+
 class Select extends StatefulWidget {
+  final Direction direction;
   final List<String> options;
 
-  const Select({super.key, required this.options});
+  const Select({super.key, required this.options, required this.direction});
 
   @override
   State<Select> createState() => _SelectState();
@@ -56,56 +59,73 @@ class _SelectState extends State<Select> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
-              width: 25.0,
+              width: 30.0,
               child: Text(_text),
             ),
           ),
-          Column(
-            children: <Widget>[
-              Container(
-                height: 30.0,
-                width: 30.0,
-                decoration: const BoxDecoration(
-                  border: Border(
-                    left: BorderSide(
-                      width: 1.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                child: IconButton(
-                  padding: const EdgeInsets.all(0.0),
-                  splashRadius: 15,
-                  icon: const Icon(Icons.arrow_drop_up),
-                  onPressed: _disabledUp ? null : _up,
-                ),
-              ),
-              Container(
-                height: 30.0,
-                width: 30.0,
-                decoration: const BoxDecoration(
-                  border: Border(
-                    left: BorderSide(
-                      width: 1.0,
-                      color: Colors.black,
-                    ),
-                    top: BorderSide(
-                      width: 1.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                child: IconButton(
-                  padding: const EdgeInsets.all(0.0),
-                  splashRadius: 15,
-                  icon: const Icon(Icons.arrow_drop_down),
-                  onPressed: _disabledDown ? null : _down,
-                ),
-              ),
-            ],
-          ),
+          widget.direction == Direction.horizontal
+              ? Row(
+                  children: _buildControls(),
+                )
+              : Column(
+                  children: _buildControls(),
+                )
         ],
       ),
     );
+  }
+
+  List<Widget> _buildControls() {
+    return <Widget>[
+      Container(
+        height: 30.0,
+        width: 30.0,
+        decoration: const BoxDecoration(
+          border: Border(
+            left: BorderSide(
+              width: 1.0,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        child: IconButton(
+          padding: const EdgeInsets.all(0.0),
+          splashRadius: 15,
+          icon: widget.direction == Direction.horizontal
+              ? const Icon(Icons.arrow_left)
+              : const Icon(Icons.arrow_drop_up),
+          onPressed: _disabledUp ? null : _up,
+        ),
+      ),
+      Container(
+        height: 30.0,
+        width: 30.0,
+        decoration: BoxDecoration(
+          border: Border(
+            left: const BorderSide(
+              width: 1.0,
+              color: Colors.black,
+            ),
+            top: widget.direction == Direction.horizontal
+                ? const BorderSide(
+                    width: 0.0,
+                    color: Colors.transparent,
+                  )
+                : const BorderSide(
+                    width: 1.0,
+                    color: Colors.black,
+                  ),
+          ),
+        ),
+        child: IconButton(
+          padding: const EdgeInsets.all(0.0),
+          splashRadius: 15,
+          icon: widget.direction == Direction.horizontal
+              ? const Icon(Icons.arrow_right)
+              : const Icon(Icons.arrow_drop_down),
+          onPressed: _disabledDown ? null : _down,
+        ),
+      ),
+    ];
   }
 }

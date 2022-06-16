@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant/ui/widgets/dropdown.dart';
 import 'package:restaurant/ui/widgets/select_widget.dart';
 
-class CostItem extends StatelessWidget {
+import '../types/direction.dart';
+
+class CostItem extends StatefulWidget {
   final String itemName;
   final int quantiy;
   final int unitPrice;
+  final itemOptions;
 
   const CostItem(
       {Key? key,
       required this.itemName,
       required this.quantiy,
-      required this.unitPrice})
+      required this.unitPrice,
+      this.itemOptions})
       : super(key: key);
 
+  @override
+  State<CostItem> createState() => _CostItemState();
+}
+
+class _CostItemState extends State<CostItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -30,7 +40,9 @@ class CostItem extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(itemName),
+                Dropdown<String>(
+                    options: widget.itemOptions,
+                    onChanged: (String selectedValue) {}),
               ],
             ),
             const SizedBox(height: 8.0),
@@ -46,10 +58,11 @@ class CostItem extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Text(
-                      quantiy.toString(),
+                      widget.quantiy.toString(),
                     ),
                     const SizedBox(width: 8.0),
                     const Select(
+                      direction: Direction.vertical,
                       options: ["mg", "g", "kg"],
                     ),
                   ],
@@ -66,7 +79,7 @@ class CostItem extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text("${unitPrice.toString()}円"),
+                Text("${widget.unitPrice.toString()}円"),
               ],
             ),
             Row(
@@ -78,7 +91,7 @@ class CostItem extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text("${(quantiy * unitPrice).toString()}円"),
+                Text("${(widget.quantiy * widget.unitPrice).toString()}円"),
               ],
             ),
           ],

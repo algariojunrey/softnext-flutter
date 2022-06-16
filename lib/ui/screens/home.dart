@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant/ui/screens/cost/cost_management.dart';
 
-import '../test.dart';
 import '../widgets/app_drawer.dart';
 
 class Home extends StatefulWidget {
@@ -68,12 +67,12 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Test(),
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const Test(),
+                        //   ),
+                        // );
                       },
                     ),
                   ),

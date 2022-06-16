@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:restaurant/ui/screens/auth/login.dart';
 import 'package:restaurant/ui/screens/auth/registration.dart';
 import 'package:restaurant/ui/screens/auth/reset-password.dart';
@@ -49,6 +50,15 @@ class MyApp extends StatelessWidget {
             ),
       ),
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''), // English, no country code
+        Locale('ja', ''), // Spanish, no country code
+      ],
       home: const Login(),
     );
   }
